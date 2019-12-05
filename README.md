@@ -36,3 +36,18 @@ perl -p -e 's/>(\S+).+(\[locus_tag=([^\]]+)\])/>$3 $1 $2/' GCF_000008585.1_ASM85
 I made the protein file of sequences using script from BioPerl.
 ```bp_translate_seq.pl M_tuberculosis.cds.fasta > M_tuberculosis.pep.fasta```
 
+# Solution:
+To run this do
+```sbatch run_pfam.sh```
+and 
+```sbatch run_kallisto.sh```
+
+Then
+```
+python combine_expression_pfam.py
+```
+
+One output is results for each experiment (`Mtub.summary_table.tab`) and one is computing mean across the replicates for an experiment (`Mtub.summary_mean_table.tab`)
+
+I did not include protein length in this report but I will fix that soon.
+
