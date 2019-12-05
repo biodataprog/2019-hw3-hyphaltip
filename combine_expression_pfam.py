@@ -76,6 +76,8 @@ with open(samples,"rU") as samp:
                         gene_expression[gene_name] = {}
                         gene_expression_avg[gene_name] = {}
                     gene_expression[gene_name][expname] = tpm
+
+                    # for the computing average value for an experiment
                     if condition_ph in gene_expression_avg[gene_name]:
                         gene_expression_avg[gene_name][condition_ph].append(tpm)
                     else:
@@ -102,7 +104,7 @@ with open("Mtub.summary_table.tab","w") as rpt:
     resultout = csv.writer(rpt,delimiter="\t")
     header = ['GENE']
     header.extend(sorted(experiments))
-    header.extend(["Pfam",'GO'])
+    header.extend(["Pfam","GO"])
     resultout.writerow(header)
     for gene in sorted(gene_expression):
         row = [gene]
